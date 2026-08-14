@@ -12,8 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Format Tanggal
     if (dateDisplay) {
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        dateDisplay.textContent = currentDate.toLocaleDateString('id-ID', options);
+        function updateDate() {
+            const now = new Date();
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const timeString = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            dateDisplay.textContent = now.toLocaleDateString('id-ID', optionsDate) + ' - ' + timeString;
+        }
+        updateDate();
+        setInterval(updateDate, 1000);
     }
 
     // Cek apakah hari ini Senin-Jumat

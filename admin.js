@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li>
                                 <div class="info" style="display: flex; flex-direction: column; gap: 0.2rem;">
                                     <div><strong>${record.kota}</strong> <span style="font-size:0.85rem; color:var(--text-muted);">(${record.namaWalikota} - Ajudan: ${record.namaAjudan})</span></div>
-                                    <div style="font-size:0.85rem; color: #4b5563;">Tanggal: <b>${dateStr} ${record.jamKonfirmasi}</b></div>
+                                    <div style="font-size:0.85rem; color: #4b5563;">Tanggal: <b>${dateStr.split(' ')[0]}</b></div>
                                     <div style="margin-top: 0.4rem;">
                                         <button class="btn-small btn-detail" data-date="${dateStr}" data-id="${record.id}" style="font-size: 0.75rem; padding: 0.3rem 0.6rem; background-color: transparent; border: 1px solid #818cf8; color: #818cf8; border-radius: 4px; cursor: pointer;">Detail</button>
                                     </div>
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="margin-top: 0.8rem;">
                         <div style="background: var(--glass-bg); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); text-align: center;">
                             <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 0.3rem;">Tanggal</span>
-                            <div style="color: var(--text-main); font-size: 1.05rem; font-weight: 500;">${dateStr} ${record.jamKonfirmasi}</div>
+                            <div style="color: var(--text-main); font-size: 1.05rem; font-weight: 500;">${dateStr.split(' ')[0]}</div>
                         </div>
                     </div>
                 `;
@@ -297,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <th style="background-color: #4CAF50; color: white;">Kehadiran OPD</th>
                     <th style="background-color: #4CAF50; color: white;">Email</th>
                     <th style="background-color: #4CAF50; color: white;">No. HP</th>
-                    <th style="background-color: #4CAF50; color: white;">Tanggal Konfirmasi</th>
                 </tr>
         `;
         
@@ -306,14 +305,13 @@ document.addEventListener('DOMContentLoaded', () => {
             records.forEach(record => {
                 tableHTML += `
                     <tr>
-                        <td>${dateStr}</td>
+                        <td>${dateStr.split(' ')[0]}</td>
                         <td>${record.kota}</td>
                         <td>${record.namaWalikota}</td>
                         <td>${record.namaAjudan}</td>
                         <td>${record.kehadiranOpd}</td>
                         <td>${record.email}</td>
-                        <td>${record.noHp}</td>
-                        <td>${record.jamKonfirmasi}</td>
+                        <td style="mso-number-format:'\\@'">${record.noHp}</td>
                     </tr>
                 `;
             });

@@ -64,6 +64,8 @@ header h3 { font-size: 1.3rem; }
     box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08); /* Bayangan kebiruan */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10;
 }
 
 .mt-4 {
@@ -355,7 +357,7 @@ select option {
     font-size: 0.6rem;
     color: rgba(255, 255, 255, 0.8);
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-    z-index: 1000;
+    z-index: 1;
     pointer-events: none;
     font-weight: 500;
 }
