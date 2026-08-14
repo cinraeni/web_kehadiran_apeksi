@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         historyContainer.innerHTML = '';
 
         if (dates.length === 0) {
-            historyContainer.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding: 1rem 0;">Belum ada riwayat presensi.</p>';
+            historyContainer.innerHTML = '<p style="text-align:center; color:#ffffff; padding: 1rem 0;">Tidak ada riwayat.</p>';
             return;
         }
 
