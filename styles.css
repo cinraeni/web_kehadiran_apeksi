@@ -20,7 +20,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: url('./public/background_pemkot.png?v=2') no-repeat center center fixed;
+    background: url('./public/apeksi_.png?v=5') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-main);
     min-height: 100vh;
@@ -40,12 +40,15 @@ header {
 }
 
 header h1, header h2, header h3 {
-    font-size: 1.8rem;
     font-weight: 700;
     color: #ffffff !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 0.5rem;
 }
+
+header h1 { font-size: 2.2rem; }
+header h2 { font-size: 1.8rem; }
+header h3 { font-size: 1.3rem; }
 
 .date-display {
     color: #f1f5f9 !important;
@@ -342,4 +345,17 @@ select option {
     color: var(--primary);
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+/* Watermark */
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    z-index: 1000;
+    pointer-events: none;
+    font-weight: 500;
 }

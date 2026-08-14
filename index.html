@@ -4,73 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presensi Pegawai</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <title>Kehadiran Apeksi</title>
+    <link rel="stylesheet" href="styles.css?v=13">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h2>Presensi Kehadiran Peserta Pelatihan Bahasa Inggris Bagi ASN Pemerintah Kota Batam</h2>
-            <p id="current-date" class="date-display">Memuat tanggal...</p>
+            <h3>Konfirmasi Kehadiran Seminar Rembug Fiskal dalam Rangka Peningkatan Pendapatan Asli Daerah (PAD)</h3>
         </header>
 
         <main>
             <form id="attendance-form" class="glass-panel">
                 <div class="form-group">
-                    <label for="employee-name">Nama</label>
-                    <input type="text" id="employee-name" required placeholder="Nama Lengkap"
+                    <label for="kota">Kota</label>
+                    <select id="kota" required
+                        style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; background-color: #ffffff;">
+                        <option value="" disabled selected>Pilih Kota</option>
+                        <option value="Sabang">Sabang</option>
+                        <option value="Banda Aceh">Banda Aceh</option>
+                        <option value="Lhokseumawe">Lhokseumawe</option>
+                        <option value="Langsa">Langsa</option>
+                        <option value="Subulussalam">Subulussalam</option>
+                        <option value="Medan">Medan</option>
+                        <option value="Pematangsiantar">Pematangsiantar</option>
+                        <option value="Sibolga">Sibolga</option>
+                        <option value="Tanjung Balai">Tanjung Balai</option>
+                        <option value="Binjai">Binjai</option>
+                        <option value="Tebing Tinggi">Tebing Tinggi</option>
+                        <option value="Sidempuan">Padang Sidempuan</option>
+                        <option value="Sitoli">Gunung Sitoli</option>
+                        <option value="Padang">Padang</option>
+                        <option value="Solok">Solok</option>
+                        <option value="Sawahlunto">Sawahlunto</option>
+                        <option value="Padang Panjang">Padang Panjang</option>
+                        <option value="Bukittinggi">Bukittinggi</option>
+                        <option value="Payakumbuh">Payakumbuh</option>
+                        <option value="Pariaman">Pariaman</option>
+                        <option value="Pekanbaru">Pekanbaru</option>
+                        <option value="Dumai">Dumai</option>
+                        <option value="Tanjungpinang">Tanjungpinang</option>
+                        <option value="Batam">Batam</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nama-walikota">Nama Wali Kota</label>
+                    <input type="text" id="nama-walikota" required placeholder="Nama Lengkap Wali Kota"
+                        style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; background-color: #ffffff;">
+                </div>
+                <div class="form-group">
+                    <label for="nama-ajudan">Nama Ajudan</label>
+                    <input type="text" id="nama-ajudan" required placeholder="Nama Lengkap Ajudan"
                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; background-color: #ffffff;">
                 </div>
 
                 <div class="form-group">
-                    <label for="nip">NIP</label>
-                    <input type="text" id="nip" required placeholder="Nomor Induk Pegawai"
+                    <label for="kehadiran-opd">Kehadiran OPD</label>
+                    <select id="kehadiran-opd" required
                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; background-color: #ffffff;">
-                </div>
-
-                <div class="form-group">
-                    <label for="jabatan">Jabatan</label>
-                    <input type="text" id="jabatan" required placeholder="Jabatan"
-                        style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; background-color: #ffffff;">
-                </div>
-
-                <div class="form-group">
-                    <label for="opd">Organisasi Perangkat Daerah</label>
-                    <select id="opd" required
-                        style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; background-color: #ffffff;">
-                        <option value="" disabled selected>Pilih Organisasi Perangkat Daerah</option>
-                        <option value="Inspektorat Kota Batam">Inspektorat Kota Batam</option>
-                        <option value="Badan Perencanaan Pembangunan Derah Kota Batam">Badan Perencanaan Pembangunan Derah Kota Batam</option>
-                        <option value="Badan Pendapatan Daerah Kota Batam">Badan Pendapatan Daerah Kota Batam</option>
-                        <option value="Badan Kepegawaian dan Sumber Daya Manusia Kota Batam">Badan Kepegawaian dan Sumber Daya Manusia Kota Batam</option>
-                        <option value="Dinas Bina Marga dan Sumber Daya Air Kota Batam">Dinas Bina Marga dan Sumber Daya Air Kota Batam</option>
-                        <option value="Dinas Cipta Karya dan Tata Ruang Kota Batam">Dinas Cipta Karya dan Tata Ruang Kota Batam</option>
-                        <option value="Dinas Kebudayaan dan Pariwisata Kota Batam">Dinas Kebudayaan dan Pariwisata Kota Batam</option>
-                        <option value="Dinas Kepemudaan dan Olah Raga Kota Batam">Dinas Kepemudaan dan Olah Raga Kota Batam</option>
-                        <option value="Dinas Kependudukan dan Pencatatan Sipil Kota Batam">Dinas Kependudukan dan Pencatatan Sipil Kota Batam</option>
-                        <option value="Dinas Kesehatan Kota Batam">Dinas Kesehatan Kota Batam</option>
-                        <option value="Dinas Komunikasi dan Informatika Kota Batam">Dinas Komunikasi dan Informatika Kota Batam</option>
-                        <option value="Dinas Lingkungan Hidup Kota Batam">Dinas Lingkungan Hidup Kota Batam</option>
-                        <option value="Dinas Pemberdayaan Perempuan PA P2 dan KB Kota Batam">Dinas Pemberdayaan Perempuan PA P2 dan KB Kota Batam</option>
-                        <option value="Dinas Penanaman Modal dan Pelayanan Terpadu Kota Batam">Dinas Penanaman Modal dan Pelayanan Terpadu Kota Batam</option>
-                        <option value="Dinas Pendidikan Kota Batam">Dinas Pendidikan Kota Batam</option>
-                        <option value="Dinas Perhubungan Kota Batam">Dinas Perhubungan Kota Batam</option>
-                        <option value="Dinas Perumahan Rakyat dan Kawasan Pemukiman Kota Batam">Dinas Perumahan Rakyat dan Kawasan Pemukiman Kota Batam</option>
-                        <option value="Dinas Tenaga Kerja Kota Batam">Dinas Tenaga Kerja Kota Batam</option>
-                        <option value="Dinas Perikanan Kota Batam">Dinas Perikanan Kota Batam</option>
-                        <option value="Kecamatan Batu Aji">Kecamatan Batu Aji</option>
-                        <option value="Kecamatan Bengkong">Kecamatan Bengkong</option>
-                        <option value="Kecamatan Sei Beduk">Kecamatan Sei Beduk</option>
-                        <option value="Kecamatan Nongsa">Kecamatan Nongsa</option>
-                        <option value="Kecamatan Sekupang">Kecamatan Sekupang</option>
-                        <option value="Kecamatan Sagulung">Kecamatan Sagulung</option>
-                        <option value="Bagian Perencanaan dan Keuangan Sekretariat Daerah Kota Batam">Bagian Perencanaan dan Keuangan Sekretariat Daerah Kota Batam</option>
-                        <option value="Bagian Protokol Sekretariat Daerah Kota Batam">Bagian Protokol Sekretariat Daerah Kota Batam</option>
-                        <option value="Bagian Administrasi Pembangunan Sekretariat Daerah Kota Batam">Bagian Administrasi Pembangunan Sekretariat Daerah Kota Batam</option>
-                        <option value="Bagian Perekonomian Sekretariat Daerah Kota Batam">Bagian Perekonomian Sekretariat Daerah Kota Batam</option>
-                        <option value="Bagian Kesejahteraan Rakyat Sekretariat Daerah Kota Batam">Bagian Kesejahteraan Rakyat Sekretariat Daerah Kota Batam</option>
+                        <option value="" disabled selected>Pilih Kehadiran OPD</option>
+                        <option value="Asisten">Asisten</option>
+                        <option value="BAPENDA">BAPENDA</option>
+                        <option value="Dinas Kominfo">Dinas Komunikasi dan Informatika</option>
+                        <option value="BPKAD">BPKAD</option>
+                        <option value="Kepala Bagian">Kepala Bagian</option>             
                     </select>
                 </div>
 
@@ -88,8 +87,8 @@
 
                 <div class="form-group">
                     <label for="tanggal">Tanggal Presensi</label>
-                    <input type="date" id="tanggal" name="tanggal" required readonly
-                        style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border); font-family: inherit; margin-top: 0.5rem; background-color: #f3f4f6; color: #6b7280; cursor: not-allowed;">
+                    <input type="date" id="tanggal" name="tanggal" required
+                        style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; margin-top: 0.5rem; background-color: #ffffff; color: var(--text-main); cursor: text;">
                 </div>
 
 
@@ -107,16 +106,17 @@
                 </div>
 
                 <div class="form-actions" style="display: flex; gap: 1rem;">
-                    <button type="button" id="btn-masuk" class="primary-btn" style="flex: 1;">Absen Masuk</button>
-                    <button type="button" id="btn-pulang" class="secondary-btn"
-                        style="flex: 1; background-color: #f59e0b; color: white; border: none;">Absen Pulang</button>
+                    <button type="button" id="btn-kirim" class="primary-btn" style="flex: 1;">Kirim Konfirmasi</button>
                 </div>
             </form>
 
         </main>
     </div>
 
-    <script type="module" src="script.js?v=3"></script>
+    <div class="watermark">&copy; 2026 Cindy Anggraeni, Politeknik Negeri Batam &mdash; All rights reserved.</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+    <script type="module" src="script.js?v=8"></script>
 </body>
 
 </html>

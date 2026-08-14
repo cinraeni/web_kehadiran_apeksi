@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Riwayat Presensi</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <title>Admin - Kehadiran Apeksi</title>
+    <link rel="stylesheet" href="styles.css?v=13">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .history-container {
@@ -46,8 +46,8 @@
 
     <div class="container history-container" id="main-content" style="display: none;">
         <header>
-            <h2>Presensi Kehadiran Peserta Pelatihan Bahasa Inggris Bagi ASN Pemerintah Kota Batam</h2>
-                </header>
+            <h2>Riwayat Kehadiran Seminar Rembug Fiskal dalam Rangka Peningkatan Pendapatan Asli Daerah (PAD)</h2>
+        </header>
 
         <main>
             <div class="top-nav"
@@ -77,83 +77,29 @@
     <!-- Bagian Pop-up Edit Data -->
     <div id="edit-modal" class="modal-overlay hidden">
         <div class="glass-panel modal-content" style="max-width: 600px;">
-            <h2>Edit Presensi</h2>
+            <h2>Edit</h2>
             <p id="edit-info" style="margin-bottom: 1rem; color: var(--text-muted);"></p>
 
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem;">
                 <div class="form-group" style="text-align: left; margin-bottom: 0;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Nama
-                        Pegawai:</label>
-                    <input type="text" id="edit-name"
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Kota:</label>
+                    <input type="text" id="edit-kota"
                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass-bg); font-family: inherit;">
                 </div>
                 <div class="form-group" style="text-align: left; margin-bottom: 0;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">NIP /
-                        NIM:</label>
-                    <input type="text" id="edit-nip"
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Nama Wali Kota:</label>
+                    <input type="text" id="edit-nama-walikota"
                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass-bg); font-family: inherit;">
                 </div>
                 <div class="form-group" style="text-align: left; margin-bottom: 0;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Jabatan /
-                        Jurusan:</label>
-                    <input type="text" id="edit-jabatan"
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Nama Ajudan:</label>
+                    <input type="text" id="edit-nama-ajudan"
                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass-bg); font-family: inherit;">
                 </div>
                 <div class="form-group" style="text-align: left; margin-bottom: 0;">
-                    <label
-                        style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Organisasi
-                        Perangkat Daerah:</label>
-                    <select id="edit-opd"
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Kehadiran OPD:</label>
+                    <input type="text" id="edit-kehadiran-opd"
                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass-bg); font-family: inherit;">
-                        <option value="" disabled selected>Pilih Organisasi Perangkat Daerah</option>
-                        <option value="Inspektorat Kota Batam">Inspektorat Kota Batam</option>
-                        <option value="Badan Perencanaan Pembangunan Derah Kota Batam">Badan Perencanaan Pembangunan
-                            Derah Kota Batam</option>
-                        <option value="Badan Pendapatan Daerah Kota Batam">Badan Pendapatan Daerah Kota Batam</option>
-                        <option value="Badan Kepegawaian dan Sumber Daya Manusia Kota Batam">Badan Kepegawaian dan
-                            Sumber Daya Manusia Kota Batam</option>
-                        <option value="Dinas Bina Marga dan Sumber Daya Air Kota Batam">Dinas Bina Marga dan Sumber Daya
-                            Air Kota Batam</option>
-                        <option value="Dinas Cipta Karya dan Tata Ruang Kota Batam">Dinas Cipta Karya dan Tata Ruang
-                            Kota Batam</option>
-                        <option value="Dinas Kebudayaan dan Pariwisata Kota Batam">Dinas Kebudayaan dan Pariwisata Kota
-                            Batam</option>
-                        <option value="Dinas Kepemudaan dan Olah Raga Kota Batam">Dinas Kepemudaan dan Olah Raga Kota
-                            Batam</option>
-                        <option value="Dinas Kependudukan dan Pencatatan Sipil Kota Batam">Dinas Kependudukan dan
-                            Pencatatan Sipil Kota Batam</option>
-                        <option value="Dinas Kesehatan Kota Batam">Dinas Kesehatan Kota Batam</option>
-                        <option value="Dinas Komunikasi dan Informatika Kota Batam">Dinas Komunikasi dan Informatika
-                            Kota Batam</option>
-                        <option value="Dinas Lingkungan Hidup Kota Batam">Dinas Lingkungan Hidup Kota Batam</option>
-                        <option value="Dinas Pemberdayaan Perempuan PA P2 dan KB Kota Batam">Dinas Pemberdayaan
-                            Perempuan PA P2 dan KB Kota Batam</option>
-                        <option value="Dinas Penanaman Modal dan Pelayanan Terpadu Kota Batam">Dinas Penanaman Modal dan
-                            Pelayanan Terpadu Kota Batam</option>
-                        <option value="Dinas Pendidikan Kota Batam">Dinas Pendidikan Kota Batam</option>
-                        <option value="Dinas Perhubungan Kota Batam">Dinas Perhubungan Kota Batam</option>
-                        <option value="Dinas Perumahan Rakyat dan Kawasan Pemukiman Kota Batam">Dinas Perumahan Rakyat
-                            dan Kawasan Pemukiman Kota Batam</option>
-                        <option value="Dinas Tenaga Kerja Kota Batam">Dinas Tenaga Kerja Kota Batam</option>
-                        <option value="Dinas Perikanan Kota Batam">Dinas Perikanan Kota Batam</option>
-                        <option value="Kecamatan Batu Aji">Kecamatan Batu Aji</option>
-                        <option value="Kecamatan Bengkong">Kecamatan Bengkong</option>
-                        <option value="Kecamatan Sei Beduk">Kecamatan Sei Beduk</option>
-                        <option value="Kecamatan Nongsa">Kecamatan Nongsa</option>
-                        <option value="Kecamatan Sekupang">Kecamatan Sekupang</option>
-                        <option value="Kecamatan Sagulung">Kecamatan Sagulung</option>
-                        <option value="Bagian Perencanaan dan Keuangan Sekretariat Daerah Kota Batam">Bagian Perencanaan
-                            dan Keuangan Sekretariat Daerah Kota Batam</option>
-                        <option value="Bagian Protokol Sekretariat Daerah Kota Batam">Bagian Protokol Sekretariat Daerah
-                            Kota Batam</option>
-                        <option value="Bagian Administrasi Pembangunan Sekretariat Daerah Kota Batam">Bagian
-                            Administrasi Pembangunan Sekretariat Daerah Kota Batam</option>
-                        <option value="Bagian Perekonomian Sekretariat Daerah Kota Batam">Bagian Perekonomian
-                            Sekretariat Daerah Kota Batam</option>
-                        <option value="Bagian Kesejahteraan Rakyat Sekretariat Daerah Kota Batam">Bagian Kesejahteraan
-                            Rakyat Sekretariat Daerah Kota Batam</option>
-
-                    </select>
                 </div>
                 <div class="form-group" style="text-align: left; margin-bottom: 0;">
                     <label
@@ -180,7 +126,7 @@
     <div id="detail-modal" class="modal-overlay hidden">
         <div class="glass-panel modal-content" style="max-width: 550px; padding: 1.5rem;">
             <h2 style="text-align: center; margin-bottom: 1rem; color: var(--primary); font-size: 1.4rem;">Detail
-                Presensi</h2>
+                Kehadiran</h2>
             <div id="detail-content" style="text-align: left;">
                 <!-- Tempat memunculkan isi detail -->
             </div>
@@ -199,7 +145,9 @@
         </div>
     </div>
 
-    <script type="module" src="admin.js?v=3"></script>
+    <div class="watermark">&copy; 2026 Cindy Anggraeni, Politeknik Negeri Batam &mdash; All rights reserved.</div>
+
+    <script type="module" src="admin.js?v=5"></script>
 </body>
 
 </html>

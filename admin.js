@@ -57,15 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!data[dateStr]) data[dateStr] = [];
                 data[dateStr].push({
                     id: id,
-                    name: record.nama,
-                    nip: record.nip || record.nim || '-',
-                    jabatan: record.jabatan || record.jurusan || '-',
-                    opd: record.opd || record.instansi || '-',
+                    kota: record.kota || '-',
+                    namaWalikota: record.namaWalikota || '-',
+                    namaAjudan: record.namaAjudan || '-',
+                    kehadiranOpd: record.kehadiranOpd || '-',
                     email: record.email || '-',
                     noHp: record.noHp || '-',
                     ttd: record.ttd || '',
-                    jamMasuk: record.jamMasuk || '-',
-                    jamPulang: record.jamPulang || '-',
+                    jamKonfirmasi: record.jamKonfirmasi || record.jamMasuk || '-',
                     status: record.status
                 });
             });
@@ -110,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         return `
                             <li>
                                 <div class="info" style="display: flex; flex-direction: column; gap: 0.2rem;">
-                                    <div><strong>${record.name}</strong> <span style="font-size:0.85rem; color:var(--text-muted);">(${record.nip} - ${record.jabatan})</span></div>
-                                    <div style="font-size:0.85rem; color: #4b5563;">Masuk: <b>${record.jamMasuk}</b> | Pulang: <b>${record.jamPulang}</b></div>
+                                    <div><strong>${record.kota}</strong> <span style="font-size:0.85rem; color:var(--text-muted);">(${record.namaWalikota} - Ajudan: ${record.namaAjudan})</span></div>
+                                    <div style="font-size:0.85rem; color: #4b5563;">Tanggal: <b>${dateStr} ${record.jamKonfirmasi}</b></div>
                                     <div style="margin-top: 0.4rem;">
-                                        <button class="btn-small btn-detail" data-date="${dateStr}" data-id="${record.id}" style="font-size: 0.75rem; padding: 0.3rem 0.6rem; background-color: transparent; border: 1px solid #818cf8; color: #818cf8; border-radius: 4px; cursor: pointer;">Detail Presensi</button>
+                                        <button class="btn-small btn-detail" data-date="${dateStr}" data-id="${record.id}" style="font-size: 0.75rem; padding: 0.3rem 0.6rem; background-color: transparent; border: 1px solid #818cf8; color: #818cf8; border-radius: 4px; cursor: pointer;">Detail</button>
                                     </div>
                                 </div>
                                 <div style="display: flex; align-items: center; gap: 1rem;">
@@ -164,10 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const record = data[currentEditDate].find(r => r.id === currentEditId);
 
             editInfo.textContent = `Tanggal: ${currentEditDate}`;
-            document.getElementById('edit-name').value = record.name !== '-' ? record.name : '';
-            document.getElementById('edit-nip').value = record.nip !== '-' ? record.nip : '';
-            document.getElementById('edit-jabatan').value = record.jabatan !== '-' ? record.jabatan : '';
-            document.getElementById('edit-opd').value = record.opd !== '-' ? record.opd : '';
+            document.getElementById('edit-kota').value = record.kota !== '-' ? record.kota : '';
+            document.getElementById('edit-nama-walikota').value = record.namaWalikota !== '-' ? record.namaWalikota : '';
+            document.getElementById('edit-nama-ajudan').value = record.namaAjudan !== '-' ? record.namaAjudan : '';
+            document.getElementById('edit-kehadiran-opd').value = record.kehadiranOpd !== '-' ? record.kehadiranOpd : '';
             document.getElementById('edit-email').value = record.email !== '-' ? record.email : '';
             document.getElementById('edit-nohp').value = record.noHp !== '-' ? record.noHp : '';
             
@@ -187,20 +186,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailContent.innerHTML = `
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
                         <div style="background: var(--glass-bg); padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid var(--glass-border);">
-                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Nama Lengkap</span>
-                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.name}</div>
+                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Kota</span>
+                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.kota}</div>
                         </div>
                         <div style="background: var(--glass-bg); padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid var(--glass-border);">
-                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">NIP / NIM</span>
-                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.nip}</div>
+                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Nama Wali Kota</span>
+                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.namaWalikota}</div>
                         </div>
                         <div style="background: var(--glass-bg); padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid var(--glass-border);">
-                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Jabatan / Jurusan</span>
-                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.jabatan}</div>
+                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Nama Ajudan</span>
+                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.namaAjudan}</div>
                         </div>
                         <div style="background: var(--glass-bg); padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid var(--glass-border);">
-                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Organisasi Perangkat Daerah</span>
-                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.opd}</div>
+                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Kehadiran OPD</span>
+                            <div style="color: var(--text-main); font-size: 0.95rem; font-weight: 500;">${record.kehadiranOpd}</div>
                         </div>
                         <div style="background: var(--glass-bg); padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid var(--glass-border);">
                             <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem;">Email</span>
@@ -212,14 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     
-                    <div style="margin-top: 0.8rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem;">
+                    <div style="margin-top: 0.8rem;">
                         <div style="background: var(--glass-bg); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); text-align: center;">
-                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 0.3rem;">Masuk</span>
-                            <div style="color: var(--text-main); font-size: 1.05rem; font-weight: 500;">${record.jamMasuk}</div>
-                        </div>
-                        <div style="background: var(--glass-bg); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); text-align: center;">
-                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 0.3rem;">Pulang</span>
-                            <div style="color: var(--text-main); font-size: 1.05rem; font-weight: 500;">${record.jamPulang}</div>
+                            <span style="display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 0.3rem;">Tanggal</span>
+                            <div style="color: var(--text-main); font-size: 1.05rem; font-weight: 500;">${dateStr} ${record.jamKonfirmasi}</div>
                         </div>
                     </div>
                 `;
@@ -248,15 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     saveEditBtn.addEventListener('click', async () => {
-        const newName = document.getElementById('edit-name').value.trim();
-        const newNip = document.getElementById('edit-nip').value.trim();
-        const newJabatan = document.getElementById('edit-jabatan').value.trim();
-        const newOpd = document.getElementById('edit-opd').value.trim();
+        const newKota = document.getElementById('edit-kota').value.trim();
+        const newNamaWalikota = document.getElementById('edit-nama-walikota').value.trim();
+        const newNamaAjudan = document.getElementById('edit-nama-ajudan').value.trim();
+        const newKehadiranOpd = document.getElementById('edit-kehadiran-opd').value.trim();
         const newEmail = document.getElementById('edit-email').value.trim();
         const newNoHp = document.getElementById('edit-nohp').value.trim();
         
-        if (!newName) {
-            alert('Nama harus diisi.');
+        if (!newKota) {
+            alert('Kota harus diisi.');
             return;
         }
 
@@ -265,10 +260,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             const updateData = { 
-                nama: newName,
-                nip: newNip,
-                jabatan: newJabatan,
-                opd: newOpd,
+                kota: newKota,
+                namaWalikota: newNamaWalikota,
+                namaAjudan: newNamaAjudan,
+                kehadiranOpd: newKehadiranOpd,
                 email: newEmail,
                 noHp: newNoHp
             };
@@ -296,14 +291,13 @@ document.addEventListener('DOMContentLoaded', () => {
             <table border="1">
                 <tr>
                     <th style="background-color: #4CAF50; color: white;">Tanggal</th>
-                    <th style="background-color: #4CAF50; color: white;">Nama</th>
-                    <th style="background-color: #4CAF50; color: white;">NIP</th>
-                    <th style="background-color: #4CAF50; color: white;">Jabatan</th>
-                    <th style="background-color: #4CAF50; color: white;">Organisasi Perangkat Daerah</th>
+                    <th style="background-color: #4CAF50; color: white;">Kota</th>
+                    <th style="background-color: #4CAF50; color: white;">Nama Wali Kota</th>
+                    <th style="background-color: #4CAF50; color: white;">Nama Ajudan</th>
+                    <th style="background-color: #4CAF50; color: white;">Kehadiran OPD</th>
                     <th style="background-color: #4CAF50; color: white;">Email</th>
                     <th style="background-color: #4CAF50; color: white;">No. HP</th>
-                    <th style="background-color: #4CAF50; color: white;">Jam Masuk</th>
-                    <th style="background-color: #4CAF50; color: white;">Jam Pulang</th>
+                    <th style="background-color: #4CAF50; color: white;">Tanggal Konfirmasi</th>
                 </tr>
         `;
         
@@ -313,14 +307,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 tableHTML += `
                     <tr>
                         <td>${dateStr}</td>
-                        <td>${record.name}</td>
-                        <td>${record.nip}</td>
-                        <td>${record.jabatan}</td>
-                        <td>${record.opd}</td>
+                        <td>${record.kota}</td>
+                        <td>${record.namaWalikota}</td>
+                        <td>${record.namaAjudan}</td>
+                        <td>${record.kehadiranOpd}</td>
                         <td>${record.email}</td>
                         <td>${record.noHp}</td>
-                        <td>${record.jamMasuk}</td>
-                        <td>${record.jamPulang}</td>
+                        <td>${record.jamKonfirmasi}</td>
                     </tr>
                 `;
             });
