@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     noHp: record.noHp || '-',
                     ttd: record.ttd || '',
                     jamKonfirmasi: record.jamKonfirmasi || record.jamMasuk || '-',
-                    status: record.status
+                    status: record.status,
+                    tanggal: record.tanggal
                 });
             });
             
@@ -163,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const record = data[currentEditDate].find(r => r.id === currentEditId);
 
             editInfo.textContent = `Tanggal: ${currentEditDate}`;
+            document.getElementById('edit-tanggal').value = record.tanggal ? record.tanggal : currentEditDate;
             document.getElementById('edit-kota').value = record.kota !== '-' ? record.kota : '';
             document.getElementById('edit-nama-walikota').value = record.namaWalikota !== '-' ? record.namaWalikota : '';
             document.getElementById('edit-nama-ajudan').value = record.namaAjudan !== '-' ? record.namaAjudan : '';
@@ -243,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     saveEditBtn.addEventListener('click', async () => {
+        const newTanggal = document.getElementById('edit-tanggal').value;
         const newKota = document.getElementById('edit-kota').value.trim();
         const newNamaWalikota = document.getElementById('edit-nama-walikota').value.trim();
         const newNamaAjudan = document.getElementById('edit-nama-ajudan').value.trim();
@@ -260,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             const updateData = { 
+                tanggal: newTanggal,
                 kota: newKota,
                 namaWalikota: newNamaWalikota,
                 namaAjudan: newNamaAjudan,

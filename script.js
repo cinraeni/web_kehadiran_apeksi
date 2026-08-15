@@ -22,14 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateDate, 1000);
     }
 
-    // Cek apakah hari ini Senin-Jumat
-    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
 
-    if (isWeekend) {
-        // Nonaktifkan form jika akhir pekan
-        showAlert('Presensi hanya dibuka pada hari kerja (Senin - Jumat).', 'error');
-        disableForm();
-    }
 
     // --- BAGIAN TANDA TANGAN ---
     const canvas = document.getElementById('signature-pad');
@@ -56,12 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SELESAI BAGIAN TANDA TANGAN ---
 
 
-    // Set nilai default input tanggal ke hari ini
+    // Set nilai default input tanggal ke 26 Agustus 2026
     const tanggalInput = document.getElementById('tanggal');
     if (tanggalInput) {
-        const tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
-        const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
-        tanggalInput.value = localISOTime.split('T')[0];
+        tanggalInput.value = '2026-08-26';
     }
 
     // Tombol untuk konfirmasi
@@ -72,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function processAttendance() {
-        if (isWeekend) return;
         
         // Pastikan form sudah diisi semua (validasi bawaan HTML5)
         if (!form.reportValidity()) return;
@@ -144,8 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetDate() {
         if (tanggalInput) {
-            const tzoffset = (new Date()).getTimezoneOffset() * 60000;
-            tanggalInput.value = (new Date(Date.now() - tzoffset)).toISOString().split('T')[0];
+            tanggalInput.value = '2026-08-26';
         }
     }
 

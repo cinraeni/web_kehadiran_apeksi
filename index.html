@@ -7,6 +7,7 @@
     <title>Kehadiran Apeksi</title>
     <link rel="stylesheet" href="styles.css?v=13">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -87,8 +88,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tanggal">Tanggal Presensi</label>
-                    <input type="date" id="tanggal" name="tanggal" required
+                    <label for="tanggal">Pilih Tanggal Kehadiran</label>
+                    <input type="text" id="tanggal" name="tanggal" required placeholder="dd/mm/yyyy"
                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); font-family: inherit; margin-top: 0.5rem; background-color: #ffffff; color: var(--text-main); cursor: text;">
                 </div>
 
@@ -117,6 +118,19 @@
     <div class="watermark">&copy; 2026 Cindy Anggraeni, Politeknik Negeri Batam &mdash; All rights reserved.</div>
 
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#tanggal", {
+                dateFormat: "Y-m-d",
+                altInput: true,
+                altFormat: "d/m/Y",
+                minDate: "2026-08-25",
+                maxDate: "2026-08-27",
+                defaultDate: "2026-08-26"
+            });
+        });
+    </script>
     <script type="module" src="script.js?v=8"></script>
 </body>
 
